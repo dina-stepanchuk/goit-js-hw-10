@@ -61,7 +61,7 @@ class Timer {
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
     return { days, hours, minutes, seconds };
   }
-  addLeadingZero({ hours, minutes, seconds }) {
+  addLeadingZero({ days, hours, minutes, seconds }) {
     this.elements.days.textContent = String(days);
     this.elements.hours.textContent = String(hours).padStart(2, '0');
     this.elements.minutes.textContent = String(minutes).padStart(2, '0');
