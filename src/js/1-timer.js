@@ -10,14 +10,13 @@ const hours = document.querySelector('[data-hours]');
 const minutes = document.querySelector('[data-minutes]');
 const seconds = document.querySelector('[data-seconds]');
 startBtn.disabled = true;
-let userSelectedDate = null;
 
 class Timer {
   constructor({ startBtn, input, elements }) {
     this.startBtn = startBtn;
-    this.input = startBtn;
+    this.input = input;
     this.elements = elements;
-    this.selectDate = null;
+    this.selectedDate = null;
     this.intervalId = null;
   }
   setDate(date) {
@@ -40,7 +39,7 @@ class Timer {
 
   stop() {
     clearInterval(this.intervalId);
-    this.intervalI = null;
+    this.intervalId = null;
     this.input.disabled = false;
     this.startBtn.disabled = true;
     this.addLeadingZero({
@@ -63,6 +62,7 @@ class Timer {
     return { days, hours, minutes, seconds };
   }
   addLeadingZero({ hours, minutes, seconds }) {
+    this.elements.days.textContent = String(days);
     this.elements.hours.textContent = String(hours).padStart(2, '0');
     this.elements.minutes.textContent = String(minutes).padStart(2, '0');
     this.elements.seconds.textContent = String(seconds).padStart(2, '0');
